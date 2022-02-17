@@ -26,63 +26,78 @@ const basicFetch = async (endpoint) => {
     }
 };
 
-export default {
-    getHomeList: async () => {
-        return [
-            {
-                slug: "originals",
-                title: "Netflix Originals",
-                items: await basicFetch(
-                    `/discover/tv?with_network=213&api_key=${API_KEY}`
-                ),
-            },
-            {
-                slug: "toppicks",
-                title: "Recommended to You",
-                items: await basicFetch(`/movie/top_rated?api_key=${API_KEY}`),
-            },
-            {
-                slug: "trending",
-                title: "Trending now",
-                items: await basicFetch(
-                    `/trending/all/week?api_key=${API_KEY}`
-                ),
-            },
-            {
-                slug: "action",
-                title: "Action movies",
-                items: await basicFetch(
-                    `/discover/movie?with_genres=28&api_key=${API_KEY}`
-                ),
-            },
-            {
-                slug: "comedy",
-                title: "Comedy movies",
-                items: await basicFetch(
-                    `/discover/movie?with_genres=35&api_key=${API_KEY}`
-                ),
-            },
-            {
-                slug: "horror",
-                title: "Horror movies",
-                items: await basicFetch(
-                    `/discover/movie?with_genres=27&api_key=${API_KEY}`
-                ),
-            },
-            {
-                slug: "romance",
-                title: "Romantic movies",
-                items: await basicFetch(
-                    `/discover/movie?with_genres=10749&api_key=${API_KEY}`
-                ),
-            },
-            {
-                slug: "documentary",
-                title: "Documentaries",
-                items: await basicFetch(
-                    `/discover/movie?with_genres=99&api_key=${API_KEY}`
-                ),
-            },
-        ];
-    },
+const getHomeList = async () => {
+    return [
+        {
+            slug: "originals",
+            title: "Netflix Originals",
+            items: await basicFetch(
+                `/discover/tv?with_network=213&api_key=${API_KEY}`
+            ),
+        },
+        {
+            slug: "toppicks",
+            title: "Recommended to You",
+            items: await basicFetch(`/movie/top_rated?api_key=${API_KEY}`),
+        },
+        {
+            slug: "trending",
+            title: "Trending now",
+            items: await basicFetch(`/trending/all/week?api_key=${API_KEY}`),
+        },
+        {
+            slug: "action",
+            title: "Action movies",
+            items: await basicFetch(
+                `/discover/movie?with_genres=28&api_key=${API_KEY}`
+            ),
+        },
+        {
+            slug: "comedy",
+            title: "Comedy movies",
+            items: await basicFetch(
+                `/discover/movie?with_genres=35&api_key=${API_KEY}`
+            ),
+        },
+        {
+            slug: "horror",
+            title: "Horror movies",
+            items: await basicFetch(
+                `/discover/movie?with_genres=27&api_key=${API_KEY}`
+            ),
+        },
+        {
+            slug: "romance",
+            title: "Romantic movies",
+            items: await basicFetch(
+                `/discover/movie?with_genres=10749&api_key=${API_KEY}`
+            ),
+        },
+        {
+            slug: "documentary",
+            title: "Documentaries",
+            items: await basicFetch(
+                `/discover/movie?with_genres=99&api_key=${API_KEY}`
+            ),
+        },
+    ];
 };
+
+/**
+ * @param id Movie or TV show ID
+ * @param type Search item type ('movie' | 'tv')
+ *
+ * @returns The movie or TV show info
+ */
+const getMovieInfo = async (id, type) => {
+    let info = {};
+
+    if (id) {
+        info = await basicFetch(`/${type}/${id}?api_key=${API_KEY}`);
+    }
+
+    return info;
+};
+
+const exportedFunctions = { getHomeList, getMovieInfo };
+export default exportedFunctions;
