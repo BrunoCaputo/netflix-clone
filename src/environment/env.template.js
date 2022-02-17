@@ -1,0 +1,2 @@
+const APIKEY = "";
+const APIBASE = "";

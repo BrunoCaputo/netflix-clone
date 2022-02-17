@@ -1,9 +1,7 @@
-import dotenv from "dotenv";
+import env from "./environment/env";
 
-dotenv.config();
-
-const API_KEY = process.env.APIKEY;
-const API_BASE = process.env.APIBASE;
+const API_KEY = env.APIKEY;
+const API_BASE = env.APIBASE;
 
 /*
 Get movies list
@@ -19,9 +17,13 @@ Get movies list
 */
 
 const basicFetch = async (endpoint) => {
-    const req = await fetch(`${API_BASE}${endpoint}`);
-    const json = await req.json();
-    return json;
+    try {
+        const req = await fetch(`${API_BASE}${endpoint}`);
+        const json = await req.json();
+        return json;
+    } catch (error) {
+        console.error(error);
+    }
 };
 
 export default {

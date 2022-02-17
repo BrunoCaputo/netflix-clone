@@ -1,9 +1,8 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,react,dotenv
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,react,dotenv
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,react
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,react
 
-### dotenv ###
-.env
+src/environment/env.js
 
 ### react ###
 .DS_*
@@ -42,4 +41,4 @@ sketch
 
 # Support for Project snippet scope
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,react,dotenv
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,react
