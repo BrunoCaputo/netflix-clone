@@ -39,14 +39,14 @@ export default {
             {
                 slug: "toppicks",
                 title: "Recommended to You",
-                items: await basicFetch(
-                    `/trending/all/week?api_key=${API_KEY}`
-                ),
+                items: await basicFetch(`/movie/top_rated?api_key=${API_KEY}`),
             },
             {
                 slug: "trending",
                 title: "Trending now",
-                items: await basicFetch(`/movie/top_rated?api_key=${API_KEY}`),
+                items: await basicFetch(
+                    `/trending/all/week?api_key=${API_KEY}`
+                ),
             },
             {
                 slug: "action",
