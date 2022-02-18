@@ -8,7 +8,7 @@ import Header from "./components/header/header";
 const App = () => {
     const [movieList, setMovieList] = useState([]);
     const [featuredData, setFeaturedData] = useState(null);
-    const [balckHeader, setBlackHeader] = useState(false);
+    const [blackHeader, setBlackHeader] = useState(false);
 
     useEffect(() => {
         const loadAll = async () => {
@@ -36,7 +36,6 @@ const App = () => {
         };
 
         window.addEventListener("scroll", scrollListener);
-
         return () => {
             window.removeEventListener("scroll", scrollListener);
         };
@@ -44,7 +43,7 @@ const App = () => {
 
     return (
         <div className="page">
-            <Header black={balckHeader} />
+            <Header black={blackHeader} />
 
             {featuredData && <FeaturedMovie item={featuredData} />}
 
@@ -54,7 +53,38 @@ const App = () => {
                 ))}
             </section>
 
-            {/* Footer */}
+            <footer>
+                Made by
+                <a
+                    href="https://github.com/BrunoCaputo"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    {" "}
+                    Bruno Caputo
+                </a>
+                <br />
+                Image Rights for
+                <a
+                    href="https://www.netflix.com/"
+                    rel="noreferrer"
+                    target="_blank"
+                    className="netflix"
+                >
+                    {" "}
+                    Netflix
+                </a>
+                <br />
+                Movies and TV Shows datas from
+                <a
+                    href="https://www.themoviedb.org/"
+                    rel="noreferrer"
+                    target="_blank"
+                >
+                    {" "}
+                    themoviedb.org
+                </a>
+            </footer>
         </div>
     );
 };
