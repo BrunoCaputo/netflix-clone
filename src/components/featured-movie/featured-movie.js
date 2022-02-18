@@ -4,6 +4,10 @@ import "./featured-movie.css";
 const FeaturedMovie = ({ item }) => {
     const firstDate = new Date(item.first_air_date);
     const genres = item.genres.map((genre) => genre.name).join(", ");
+    let description = item.overview;
+    if (description.length > 200) {
+        description = description.substring(0, 200) + "...";
+    }
 
     return (
         <section
@@ -29,7 +33,7 @@ const FeaturedMovie = ({ item }) => {
                             {item.number_of_seasons > 1 && "s"}
                         </div>
                     </div>
-                    <div className="featured--description">{item.overview}</div>
+                    <div className="featured--description">{description}</div>
                     <div className="featured--buttons">
                         <a
                             href={`/watch/${item.id}`}
