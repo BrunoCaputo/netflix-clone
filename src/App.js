@@ -10,6 +10,8 @@ const App = () => {
     const [featuredData, setFeaturedData] = useState(null);
     const [blackHeader, setBlackHeader] = useState(false);
 
+    const spinnerUrl = "https://www.rchandru.com/images/portfolio/loading.gif";
+
     useEffect(() => {
         const loadAll = async () => {
             // Get movies lists
@@ -85,6 +87,12 @@ const App = () => {
                     themoviedb.org
                 </a>
             </footer>
+
+            {movieList.length <= 0 && (
+                <div className="loading">
+                    <img src={spinnerUrl} alt="loading spinner" />
+                </div>
+            )}
         </div>
     );
 };
